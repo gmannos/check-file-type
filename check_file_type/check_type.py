@@ -21,15 +21,15 @@ def check_type():
     parser = argparse.ArgumentParser(description=usage)
     parser.add_argument('-f', '--file',
                         help="File for which type need to check")
-    parser.add_argument('-t', '--type',
+    parser.add_argument('-i', '--is_type',
                         help="Type of file to check")
     args = parser.parse_args()
     fh = open(args.file, "r")
     data = fh.read()
     result = 'unknown'
-    if args.type == 'json':
+    if args.is_type == 'json':
         result =  is_json(data)
-    elif args.type == 'yaml':
+    elif args.is_type == 'yaml':
         # Every json file can be loaded as yaml file so
         # return the result False if file is json loadable
         result = is_yaml(data) and not is_json(data)
